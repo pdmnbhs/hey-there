@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom"
+
 export default function Card({ listing }) {
+
+  const navigate = useNavigate()
+
   return (
-    <div className="border rounded-xl overflow-hidden shadow hover:shadow-lg transition cursor-pointer">
+    <div
+      onClick={() => navigate(`/listing/${listing.id}`)}
+      className="border rounded-xl overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
+    >
 
       <img
         src={listing.image}

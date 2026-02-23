@@ -1,4 +1,13 @@
-export default function Navbar() {
+import { useState } from "react"
+
+export default function Navbar({ setSearch }) {
+
+  const [input, setInput] = useState("")
+
+  function handleSearch() {
+    setSearch(input)
+  }
+
   return (
     <nav className="flex justify-between items-center px-6 py-4 border-b">
 
@@ -6,14 +15,23 @@ export default function Navbar() {
         airbnb
       </h1>
 
-      <div className="flex gap-4">
-        <button className="px-4 py-2 border rounded-full hover:bg-gray-100">
-          Login
+      <div className="flex gap-2">
+
+        <input
+          type="text"
+          placeholder="Search places"
+          className="border px-3 py-2 rounded-full"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+
+        <button
+          onClick={handleSearch}
+          className="bg-red-500 text-white px-4 py-2 rounded-full"
+        >
+          Search
         </button>
 
-        <button className="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600">
-          Signup
-        </button>
       </div>
 
     </nav>
